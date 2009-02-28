@@ -1,0 +1,1 @@
+SYNC_SERVER = "http://rhosync.vdggroup.com/apps/Lighthouse/sources/"
