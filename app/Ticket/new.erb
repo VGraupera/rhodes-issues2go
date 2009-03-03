@@ -1,7 +1,10 @@
-<form title="New Ticket" 
-	  class="panel"
-	  id="ticket_new_form" 
-	  method="POST" 
+<div class="toolbar">
+  <span class="left_button"><a href="/app" class="button">Cancel</a></span>
+	<h1 id="pageTitle">Add a New Ticket</h1>
+</div>
+
+
+<form class="panel" id="ticket_new_form" method="POST" 
 	  action="<%=url_for(:action => :create)%>">
 	<fieldset>
 		<input type="hidden" name="id" value="<%=@ticket.object%>"/>

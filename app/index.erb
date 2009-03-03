@@ -1,8 +1,14 @@
+<script language="JavaScript">
+  if (location.href =='http://localhost:8080/app/index_erb.iseq?settings=true') {
+    window.location ='/app/Settings/sources';
+  }
+</script>
+
 <div class="toolbar">
 	<h1 id="pageTitle">Issues To Go</h1>
 </div>
 
-<ul id="home" selected="true" title="Lighthouse">
+<ul id="home">
 <% if SyncEngine::logged_in > 0 %>		
 	<li><a href="Ticket">All tickets</li>
 	<li><a href="Ticket/today">Todays tickets</li>

@@ -1,0 +1,11 @@
+<div class="toolbar">
+	<h1 id="pageTitle">Settings: Sources</h1>
+</div>
+
+
+<ul id="sources">
+	<% @sources.each do |source| %>
+	  <li><%= "#{source.name} {#{source.source_id}}: #{source.distinct_objects} records" %></li>
+	<% end %>
+	<li><%= link_to "Do sync", :action => :do_sync %></li>
+</ul>

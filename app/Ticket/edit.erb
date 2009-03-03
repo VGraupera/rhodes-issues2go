@@ -1,4 +1,9 @@
-<form class="panel" id="ticket_edit_form" title="Edit Ticket" method="POST" action="<%=url_for(:action => :update)%>">
+<div class="toolbar">
+  <span class="left_button"><a href="javascript:history.back()" class="button">Cancel</a></span>
+	<h1 id="pageTitle">Edit Ticket</h1>
+</div>
+
+<form class="panel" id="ticket_edit_form" method="POST" action="<%=url_for(:action => :update)%>">
 		<div class="ticket_header">
 			<h1 class="ticket_title"><%= @ticket.title %></h1>
 			
@@ -7,7 +12,7 @@
 			<span class="<%= @ticket.state %>"><%= @ticket.state %></span>
 			</div>
 			<div class="ticket_reported"><span>Reported by:</span> 
-			<a href="<%= "/Lighthouse/User/{#{@ticket.creator_id}}/show" %>"><%= User.find(@ticket.creator_id).name %></a> <br />
+			<a href="<%= "/app/User/{#{@ticket.creator_id}}/show" %>"><%= User.find(@ticket.creator_id).name %></a> <br />
 			<%= Time.parse(@ticket.created_at).strftime("%B %d, %Y @ %I:%M%p") %></div>
 		</div>
 		<div class="clearer"></div>

@@ -1,7 +1,19 @@
 require 'rho'
 require 'rho/rhocontroller'
+require 'rhom/rhom_source'
 
 class SettingsController < Rho::RhoController
+  include Rhom
+  
+  def sources
+    @sources = RhomSource.find(:all)
+    render :action => :sources
+  end
+  
+  def do_sync
+    SyncEngine::dosync
+    redirect Rho::RhoConfig.start_path
+  end
 
   # GET /User/edit
   def login

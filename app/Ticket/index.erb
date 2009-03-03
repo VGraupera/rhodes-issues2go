@@ -1,20 +1,16 @@
 <div class="toolbar">
-	<h1 id="pageTitle">
-		Tickets
-	</h1>
+	<h1 id="pageTitle">Tickets</h1>
+	<% if @project %>
+	  <span class="right_button"><a href="/app/Ticket/new" class="button">New</a></span>
+	<% end %>
 </div>
 
-<ul id="tickets" selected="true">	
-  <% if @project %>
-  <a class="button right_button" href="/Lighthouse/LighthouseTicket/new" target="_self">New</a>
-  <% end %>
-  
+<ul id="tickets" >	
 <% if @tickets && @tickets.length > 0 %>
 	<% @tickets.each do |ticket| %>
 		<% if project = Project.find(ticket.project_id) %>
 			<li class="ticket_details">
-				<div><%= strike_if(link_to("<span class=\"name\">\"#{ticket.title}\"</span>", :action => :edit, :id => ticket.object), resolved?(ticket)) %></div>
-				<%= strike_if("##{display_blanks(ticket.number)}", resolved?(ticket)) %> / <%= project.name %> / <span class="<%= display_blanks(ticket.state) %>"><%= ticket.state %></span>
+			  <%= link_to ticket_details(ticket, project), :action => :edit, :id => ticket.object %>
 			</li>
 		<% end %>
 	<% end %>

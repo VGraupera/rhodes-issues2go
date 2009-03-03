@@ -23,6 +23,11 @@ fieldset select {margin-top:5px;}
 	padding:20px;
 }
 
+.ticket_meta {
+	color:#777777;
+	font-weight:normal;
+}
+
 .clearer {clear:both;}
 .changename {font-weight:bold;}
 

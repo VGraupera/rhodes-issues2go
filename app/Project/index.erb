@@ -1,11 +1,9 @@
 <div class="toolbar">
-	<h1 id="pageTitle">
-		Projects
-	</h1>
+	<h1 id="pageTitle">Projects</h1>
 </div>
 
 <ul id="projects" selected="true">
 	<% @projects.each do |x| %>
-		<li><a href="<%= "/Lighthouse/Ticket/#{x.object}/index" %>"><%= x.name %></a></li>
+		<li><a href="<%= "/app/Ticket/#{x.object}/index" %>"><%= x.name %></a></li>
 	<% end %>
 </ul>
