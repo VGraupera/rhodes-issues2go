@@ -31,7 +31,7 @@ li a, li a:active {
 	font-size:12px;
 	padding:5px;
 	position:relative;
-
+	top:3px;
 	text-decoration:none;
 }
 

@@ -1,11 +1,12 @@
+<div class="panel" style="height:480px;padding:0">
+
 <div class="toolbar">
+  <span class="left_button"><a href="/app" class="button">Cancel</a></span>
 	<h1 id="pageTitle">Login</h1>
+	<span class="right_button"><a href="#" onclick='$("#user_edit_form").submit();' class="button">Login</a></span>
 </div>
 
-<form title="Login to Rhodes"
-      class="panel" 
-		 id="user_edit_form" 
-	 method="POST" 
+<form class="panel" id="user_edit_form" method="POST" 
 	 action="<%=url_for(:action => 'do_login')%>" selected="true">	
 			
 	<% if @msg %>
@@ -23,9 +24,5 @@
 		</tr>
 	</table>
 
-  <p align="center">
-    <input type="submit" value="Login"/><br/>
-    <a href="<%=Rho::RhoConfig.start_path%>" target="_self">Cancel</a>
-  </p>
-
 </form>
+</div>

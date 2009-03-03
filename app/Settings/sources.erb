@@ -5,7 +5,7 @@
 
 <ul id="sources">
 	<% @sources.each do |source| %>
-	  <li><%= "#{source.name} {#{source.source_id}}: #{source.distinct_objects} records" %></li>
+	  <li><%= "#{source.name}(#{source.source_id}): #{source.distinct_objects} records" %></li>
 	<% end %>
-	<li><%= link_to "Do sync", :action => :do_sync %></li>
+	<li><%= link_to "Synchronize Now", :action => :do_sync %></li>
 </ul>

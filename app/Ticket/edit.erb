@@ -1,9 +1,10 @@
 <div class="toolbar">
   <span class="left_button"><a href="javascript:history.back()" class="button">Cancel</a></span>
 	<h1 id="pageTitle">Edit Ticket</h1>
+	<span class="right_button"><a href="#" onclick='$("#ticket_edit_form").submit();' class="button">Update</a></span>
 </div>
-
-<form class="panel" id="ticket_edit_form" method="POST" action="<%=url_for(:action => :update)%>">
+<div class="panel">
+<form id="ticket_edit_form" method="POST" action="<%=url_for(:action => :update)%>">
 		<div class="ticket_header">
 			<h1 class="ticket_title"><%= @ticket.title %></h1>
 			
@@ -98,8 +99,6 @@
 		  </div>
 				
 	</fieldset>
-	<input type="submit" value="Update"/>
-	<p align="center" class="whiteButton">
-		<a href="<%=url_for(:action => :delete, :id => @ticket.object)%>"><font color="#990000">Delete</font></a>
-	</p>
 </form>
+<p align="center" class="whiteButton"><a href="<%=url_for(:action => :delete, :id => @ticket.object)%>"><font color="#990000">Delete</font></a></p>
+</div>

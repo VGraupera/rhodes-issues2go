@@ -1,10 +1,11 @@
 <div class="toolbar">
   <span class="left_button"><a href="/app" class="button">Cancel</a></span>
 	<h1 id="pageTitle">Add a New Ticket</h1>
+	<span class="right_button"><a href="#" onclick='$("#ticket_edit_form").submit();' class="button">Save</a></span>
 </div>
 
-
-<form class="panel" id="ticket_new_form" method="POST" 
+<div class="panel">
+<form id="ticket_new_form" method="POST" 
 	  action="<%=url_for(:action => :create)%>">
 	<fieldset>
 		<input type="hidden" name="id" value="<%=@ticket.object%>"/>
@@ -60,5 +61,5 @@
 		  </div>
 		
 	</fieldset>
-	<input type="submit" value="Create"/>
 </form>
+</div>
