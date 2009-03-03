@@ -1,6 +1,5 @@
 require 'rho/rhoapplication'
 
-
-class LighthouseApplication < Rho::RhoApplication
+class AppApplication < Rho::RhoApplication
 end
 
