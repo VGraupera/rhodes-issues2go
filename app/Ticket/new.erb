@@ -4,8 +4,7 @@
 	<span class="right_button"><a href="#" onclick='$("#ticket_edit_form").submit();' class="button">Save</a></span>
 </div>
 
-<div class="panel">
-<form id="ticket_new_form" method="POST" 
+<form id="ticket_new_form" class="panel" method="POST" 
 	  action="<%=url_for(:action => :create)%>">
 	<fieldset>
 		<input type="hidden" name="id" value="<%=@ticket.object%>"/>
@@ -62,4 +61,3 @@
 		
 	</fieldset>
 </form>
-</div>

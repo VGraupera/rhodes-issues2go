@@ -85,6 +85,8 @@ body[orient="landscape"] > .toolbar > h1 {
     text-shadow: rgba(255, 255, 255, 0.7) 0 1px 0;
 }
 
+.redButton {color:#fff;background-color:red;}
+
 .grayButton {
     -webkit-border-image: url(../images/grayButton.png) 0 12 0 12;
     color: #FFFFFF;
@@ -184,7 +186,7 @@ input:not(input[type|=radio]):not(input[type|=checkbox]) {
 
 /************************************************************************************************/
 
-body > .panel {
+.panel {
     box-sizing: border-box;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
@@ -192,7 +194,7 @@ body > .panel {
     background: #c8c8c8 url(../images/pinstripes.png);
 }
 
-.panel > fieldset {
+.panel fieldset {
     position: relative;
     margin: 0 0 20px 0;
     padding: 0;

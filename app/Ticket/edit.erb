@@ -1,5 +1,5 @@
 <div class="toolbar">
-  <span class="left_button"><a href="javascript:history.back()" class="button">Cancel</a></span>
+  <span class="left_button"><a href="#" onclick="javascript:history.back()" class="button">Cancel</a></span>
 	<h1 id="pageTitle">Edit Ticket</h1>
 	<span class="right_button"><a href="#" onclick='$("#ticket_edit_form").submit();' class="button">Update</a></span>
 </div>
@@ -14,7 +14,7 @@
 			</div>
 			<div class="ticket_reported"><span>Reported by:</span> 
 			<a href="<%= "/app/User/{#{@ticket.creator_id}}/show" %>"><%= User.find(@ticket.creator_id).name %></a> <br />
-			<%= Time.parse(@ticket.created_at).strftime("%B %d, %Y @ %I:%M%p") %></div>
+			<%= time_stamp(@ticket.created_at) %></div>
 		</div>
 		<div class="clearer"></div>
 		<h3>Comments and changes</h3>
@@ -24,14 +24,14 @@
 				versions.each do |change| %>
 				<div class="ticket_version">
 					<div class="changename"><%= User.find(change.user_id).name %></div>
-					<div class="changedate"><%= Time.parse(change.updated_at).strftime("%B %d, %Y @ %I:%M%p") %></div>
+					<div class="changedate"><%= time_stamp(change.updated_at) %></div>
 					<% if change.changes %>
 						<% change_log = change.changes.split("||||") # we encoded array on the server this way %>
 						<% if change_log.length > 1 %>
 							<ul class="info">
 								<% change_log.each do |element| %>
 									<% if element != "<<<EOC>>>" %>
-										<li>→ <%= element %></li>
+										<li> &rarr; <%= element %></li>
 									<% end %>
 								<% end %>
 							</ul>
@@ -100,5 +100,5 @@
 				
 	</fieldset>
 </form>
-<p align="center" class="whiteButton"><a href="<%=url_for(:action => :delete, :id => @ticket.object)%>"><font color="#990000">Delete</font></a></p>
+<p align="center" class="redButton"><a href="<%=url_for(:action => :delete, :id => @ticket.object)%>">Delete</a></p>
 </div>

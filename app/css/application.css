@@ -40,7 +40,7 @@ list-style-position:outside;
 list-style-type:none;
 }
 
-ul.info li {font-weight:bold;margin-left:10px;padding-left:0;}
+ul.info li {font-weight:bold;margin-left:10px;padding-left:0;font-size:16px;}
 
 .tallrow {
 	position: relative;
@@ -61,4 +61,17 @@ textarea {
 		width:auto;
     margin: 0;
     padding: 6px;
+}
+
+h2 {
+	margin: 0 0 8px 14px;
+	font-size: inherit;
+	font-weight: bold;
+	color: #4d4d70;
+	text-shadow: rgba(255, 255, 255, 0.75) 2px 2px 0;
+}
+
+ul.sources li {
+	font-size:16px;
+	font-weight:normal;
 }
