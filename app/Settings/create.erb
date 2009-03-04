@@ -1,0 +1,61 @@
+<div class="panel" style="height:480px;padding:0">
+
+<div class="toolbar">
+  <span class="left_button"><a href="/app" class="button">Cancel</a></span>
+	<h1 id="pageTitle">New Account</h1>
+	<span class="right_button"><a href="#" onclick='$("#new_user_form").submit();' class="button">Create</a></span>
+</div>
+
+<form class="panel" id="new_user_form" method="POST" 
+	 action="<%=url_for(:action => 'do_create')%>" selected="true">	
+			
+	<% if @msg %>
+	  <p style="color:#ff0000"><%= @msg %></p>
+	<% end %>
+	
+	<p>Enter new "Issues to Go" user name and password below:</p>
+	
+	<fieldset>		
+	  <div class="row">
+		  <label>User name</label>
+		  <input type="text" name="login"/>
+	  </div>
+	  <div class="row">
+		  <label>Password</label>
+		  <input type="text" name="password"/>
+	  </div>
+	</fieldset>		
+    
+	
+	<p>Enter your Lighthouseapp.com info:</p>
+	
+	<fieldset>		
+	  <div class="row">
+		  <label>Account</label>
+		  <input type="text" name="domain"/>
+	  </div>
+	  <div class="row" style="text-align:left;padding:10px 15px">Example for http://rhomobile.lighthouseapp.com enter "rhomobile"</div>
+	</fieldset>
+		
+
+	<p>Enter Lighthouse user name and password <span style="font-weight:bold;text-decoration:underline">-OR-</span> API token.</p>
+
+	<fieldset>
+		  <div class="row">
+			  <label>User name</label>
+			  <input type="text" name="lh_login"/>
+		  </div>
+		  <div class="row">
+			  <label>Password</label>
+			  <input type="text" name="lh_password"/>
+		  </div>
+		  <div class="tallrow" style="height:auto">
+			  <div style="text-align:left;font-weight:bold;font-size:14px;padding:10px 15px">API Token (40 characters)</div>
+			  <input style="width:90%;margin:0 10px 10px 5px;" type="text" name="token"/>
+		  </div>
+	</fieldset>
+	
+</form>
+
+<p>Questions? Visit the <a href="http://www.issuestogo.com">Issues To Go</a> website or <a href="mailto:customercare@vdggroup.com">contact us</a>.</p>
+</div>

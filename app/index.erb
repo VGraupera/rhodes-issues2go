@@ -1,7 +1,13 @@
 <script language="JavaScript">
+
+<% if SyncEngine::logged_in > 0 %>		
   if (location.href =='http://localhost:8080/app/index_erb.iseq?settings=true') {
     window.location ='/app/Settings/sources';
   }
+<% else %>
+  window.location ='/app/Settings/login';
+<% end %>
+
 </script>
 
 <div class="toolbar">
@@ -9,13 +15,9 @@
 </div>
 
 <ul id="home">
-<% if SyncEngine::logged_in > 0 %>		
 	<li><a href="Ticket"><img class="menu_icon" src="images/ticket.png"/>All tickets</li>
 	<li><a href="Ticket/today"><img class="menu_icon" src="images/menu/news.png"/>Todays tickets</li>
 	<li><a href="Ticket/assgined_to_me"><img class="menu_icon" src="images/menu/me.png"/>Tickets assigned to me</li>
 	<li><a href="Project"><img class="menu_icon" src="images/menu/projects.png"/>Projects</li>
 	<li><a href="User"><img class="menu_icon" src="images/menu/users.png"/>Users</li>	
-<% else %>
-	<li><a href="Settings/login">Login</a></li>
- <% end %>
 </ul>

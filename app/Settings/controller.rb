@@ -10,6 +10,19 @@ class SettingsController < Rho::RhoController
     render :action => :sources
   end
   
+  def create
+    render :action => :create
+  end
+  
+  def do_create
+    @login=Login.new(:token => @params['token'], :url=>  @params['domain'])
+    @login.save
+    SyncEngine::login(@params['login'], @params['password'])
+    SyncEngine::dosync
+    
+    redirect Rho::RhoConfig.start_path
+  end
+  
   def do_sync
     SyncEngine::dosync
     redirect Rho::RhoConfig.start_path

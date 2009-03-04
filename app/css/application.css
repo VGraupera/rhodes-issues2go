@@ -28,7 +28,6 @@ fieldset select {margin-top:5px;}
 	font-weight:normal;
 }
 
-.clearer {clear:both;}
 .changename {font-weight:bold;}
 
 .ticket_version {border-bottom:1px solid #ddd;margin-bottom:10px;}
@@ -53,9 +52,6 @@ textarea {
 	font-size: 16px;
   font-weight: normal;
 }
-
-.tallrow label { float:left; line-height: 42px;font-weight: bold; margin-left:14px;}
-.tallrow select { float:right; clear:left; font-size: 120%; height: 30px;}
 
 .tallrow input:not(input[type|=radio]):not(input[type|=checkbox]) {
 		width:auto;
