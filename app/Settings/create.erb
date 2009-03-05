@@ -6,14 +6,20 @@
 	<span class="right_button"><a href="#" onclick='$("#new_user_form").submit();' class="button">Create</a></span>
 </div>
 
-<form class="panel" id="new_user_form" method="POST" 
+<div style="margin:0 10px">
+<p>Have an existing account? Click below:</p>
+<p align="center" class="whiteButton">
+  <a href="/app/Settings/login">Login</a>
+</p>
+
+<form class="panel" id="new_user_form" method="POST" style="margin-top:0"
 	 action="<%=url_for(:action => 'do_create')%>" selected="true">	
-			
+		
+	<p style="margin-top:0">Enter new "Issues to Go" user name and password below. You can also create a new account by visiting our website at http://www.issuestogo.com:</p>
+	
 	<% if @msg %>
 	  <p style="color:#ff0000"><%= @msg %></p>
 	<% end %>
-	
-	<p>Enter new "Issues to Go" user name and password below:</p>
 	
 	<fieldset>		
 	  <div class="row">
@@ -34,7 +40,7 @@
 		  <label>Account</label>
 		  <input type="text" name="domain"/>
 	  </div>
-	  <div class="row" style="text-align:left;padding:10px 15px">Example for http://rhomobile.lighthouseapp.com enter "rhomobile"</div>
+	  <div class="row" style="text-align:left;padding:10px 15px; color:#aaa">Example for http://rhomobile.lighthouseapp.com enter "rhomobile"</div>
 	</fieldset>
 		
 
