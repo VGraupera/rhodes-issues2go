@@ -14,11 +14,7 @@ class SettingsController < Rho::RhoController
     render :action => :create
   end
   
-  def do_create
-    puts "in do_create with #{@params.inspect.to_s}\n"
-    
-    @login=Login.new(:token => @params['token'], :url=>  @params['domain'])
-    @login.save
+  def do_login
     SyncEngine::login(@params['login'], @params['password'])
     SyncEngine::dosync
     
