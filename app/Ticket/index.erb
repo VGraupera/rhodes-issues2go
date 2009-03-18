@@ -1,9 +1,13 @@
 <div class="toolbar">
 	<h1 id="pageTitle">Tickets</h1>
 	<% if @project %>
-	  <span class="right_button"><a href="/app/Ticket/new" class="button">New</a></span>
+	  <span class="right_button"><a href="<%= "/app/Ticket/new?project=#{@project.object}" %>" class="button">New</a></span>
 	<% end %>
 </div>
+
+<% if @please_wait %>
+<div class="flash">Please wait while we update your data from the server</div>
+<% else %>
 
 <ul id="tickets" >	
 <% if @tickets && @tickets.length > 0 %>
@@ -19,3 +23,5 @@
 <% end %>
 
 </ul>
+
+<% end %>

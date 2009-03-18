@@ -3,6 +3,10 @@
 <% if SyncEngine::logged_in > 0 %>		
   if (location.href =='http://localhost:8080/app/index_erb.iseq?settings=true') {
     window.location ='/app/Settings/sources';
+  } 
+  else if (location.href =='http://localhost:8080/app/index_erb.iseq?please_wait=true')
+  {
+    window.location ='/app/Ticket/index?please_wait=true';
   }
 <% else %>
   window.location ='/app/Settings/create';

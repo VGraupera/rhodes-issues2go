@@ -12,18 +12,26 @@ class TicketController < Rho::RhoController
     @title = "All tickets"	
     @tickets = Ticket.find(:all)
     
-    # if we pass in an ID them limit by only that project 
-    if @params['id']
-      @project = Project.find(@params['id'])
-      @title = @project.name
+    @please_wait = @params['please_wait']
+    
+    unless @please_wait
+      # if we pass in an ID them limit by only that project 
+      if @params['id']
+        @project = Project.find(@params['id'])
+        @title = @project.name
       
-      @tickets = @tickets.reject {|ticket| ticket.project_id != strip_braces(@params['id']) }
+        @tickets = @tickets.reject {|ticket| ticket.project_id != strip_braces(@params['id']) }
+      end
+      @tickets = @tickets.sort {|x,y| y.number.to_i <=> x.number.to_i }
     end
-    @tickets = @tickets.sort {|x,y| y.number.to_i <=> x.number.to_i }
     
     render :action => :index
   end
 
+  def sync_notify
+    WebView::navigate("/app")
+  end
+  
   #GET /Ticket/today
   def today
     @title = "Todays tickets"
@@ -42,12 +50,15 @@ class TicketController < Rho::RhoController
     @title = "Assigned to me"
     @tickets = Ticket.find(:all)
     
-    # get the ID of user passed from the source
-    settings = LighthouseSettings.find(:all)[0]
+    # # get the ID of user passed from the source
+    # settings = LighthouseSettings.find(:all)[0]
+    # 
+    # @tickets = @tickets.reject do |ticket|
+    #   ticket.assigned_user_id != settings.lighthouse_id
+    # end
     
-    @tickets = @tickets.reject do |ticket|
-      ticket.assigned_user_id != settings.lighthouse_id
-    end
+    settings = LighthouseSettings.find(:all)[0]
+    @tickets = Ticket.find(:all, :conditions => {:assigned_user_id => settings.lighthouse_id})
     @tickets = @tickets.sort {|x,y| y.number.to_i <=> x.number.to_i }
     
     render :action => :index
@@ -64,7 +75,7 @@ class TicketController < Rho::RhoController
     @ticket = Ticket.new
     
     # we pass in th ID of the project to create under
-    @ticket.project_id = strip_braces(@params['id'])
+    @ticket.project_id = strip_braces(@params['project'])
     @ticket.created_at = Time.new
     
     render :action => :new

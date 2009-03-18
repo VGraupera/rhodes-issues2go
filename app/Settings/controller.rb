@@ -40,9 +40,11 @@ class SettingsController < Rho::RhoController
       render :action => :login
     end
     if success > 0
+      LighthouseSettings.set_notification("/app/Ticket/sync_notify", "sync_complete=true")
+      
       # run sync if we were successful
       SyncEngine::dosync
-      redirect Rho::RhoConfig.start_path
+      redirect '/app?please_wait=true'
     else
       @msg = "You entered an invalid login/password, please try again."
       render :action => :login
@@ -50,6 +52,9 @@ class SettingsController < Rho::RhoController
   end
   
   def logout
+    SyncEngine::trigger_sync_db_reset
+    SyncEngine::dosync
+    
     SyncEngine::logout
     @msg = "You have been logged out."
     render :action => :login

@@ -29,7 +29,7 @@ li a, li a:active {
 	font-family: Helvetica;
 	font-weight:bold;
 	font-size:12px;
-	padding:5px;
+	padding:0 0 0 5px; margin:0;
 	position:relative;
 	top:3px;
 	text-decoration:none;
