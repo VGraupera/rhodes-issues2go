@@ -50,15 +50,10 @@ class TicketController < Rho::RhoController
     @title = "Assigned to me"
     @tickets = Ticket.find(:all)
     
-    # # get the ID of user passed from the source
-    # settings = LighthouseSettings.find(:all)[0]
-    # 
-    # @tickets = @tickets.reject do |ticket|
-    #   ticket.assigned_user_id != settings.lighthouse_id
-    # end
-    
     settings = LighthouseSettings.find(:all)[0]
-    @tickets = Ticket.find(:all, :conditions => {:assigned_user_id => settings.lighthouse_id})
+    if settings
+      @tickets = Ticket.find(:all, :conditions => {:assigned_user_id => settings.lighthouse_id})
+    end
     @tickets = @tickets.sort {|x,y| y.number.to_i <=> x.number.to_i }
     
     render :action => :index
