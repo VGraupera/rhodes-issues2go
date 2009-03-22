@@ -52,10 +52,11 @@ class SettingsController < Rho::RhoController
   end
   
   def logout
+    SyncEngine::logout
+    
     SyncEngine::trigger_sync_db_reset
     SyncEngine::dosync
     
-    SyncEngine::logout
     @msg = "You have been logged out."
     render :action => :login
   end

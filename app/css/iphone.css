@@ -85,7 +85,15 @@ body[orient="landscape"] > .toolbar > h1 {
     text-shadow: rgba(255, 255, 255, 0.7) 0 1px 0;
 }
 
-.redButton {color:#fff;background-color:red;}
+.redButton {
+	padding: 10px;
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+  -webkit-border-image: url(../images/redButton.png) 0 12 0 12;
+}
+
+.redButton a { color: #FFFFFF; }
 
 .grayButton {
     -webkit-border-image: url(../images/grayButton.png) 0 12 0 12;
