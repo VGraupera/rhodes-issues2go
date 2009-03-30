@@ -1,4 +1,4 @@
-<div class="panel" style="height:480px;padding:0">
+<div class="panel" style="height:660px;padding:0">
 
 <div class="toolbar">
   <a href="/app" class="left_button"><span class="button">Cancel</span></a>
@@ -6,18 +6,10 @@
 	<span class="right_button"><a href="#" onclick='$("#new_user_form").submit();' class="button">Create</a></span>
 </div>
 
-<div style="margin:0 10px">
-<p>Have an existing account?</p>
-<p align="center">
-  <a href="/app/Settings/login">Click here to Login</a>
-</p>
-
-<hr />
-
 <form class="panel" id="new_user_form" method="POST" style="margin-top:0"
 	 action="http://www.issuestogo.com/client_create" selected="true">	
 		
-	<p style="margin-top:0">Enter new "Issues to Go" user name and password below. You can also create a new account by visiting our website at http://www.issuestogo.com:</p>
+	<p class="explain">Enter new "Issues to Go" information below. You can also create a new account by visiting our website at http://www.issuestogo.com:</p>
 	
 	<% if @msg %>
 	  <p style="color:#ff0000"><%= @msg %></p>
@@ -34,7 +26,6 @@
 	  </div>
 	</fieldset>		
     
-	
 	<p>Enter your lighthouseapp.com info:</p>
 	
 	<fieldset>		
@@ -52,5 +43,5 @@
 	<input type="submit" value="Create Account">
 </form>
 
-<p>Questions? Visit the <a href="http://www.issuestogo.com">Issues To Go</a> website or <a href="mailto:customercare@vdggroup.com">contact us</a>.</p>
+<p class="explain">Questions? Visit the <a href="http://www.issuestogo.com">Issues To Go</a> website or <a href="mailto:customercare@vdggroup.com">contact us</a>.</p>
 </div>

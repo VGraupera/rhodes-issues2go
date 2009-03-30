@@ -5,6 +5,10 @@ require 'rhom/rhom_source'
 class SettingsController < Rho::RhoController
   include Rhom
   
+  def index
+    render :action => :index
+  end
+  
   def sources
     @sources = RhomSource.find(:all)
     render :action => :sources
@@ -36,9 +40,10 @@ class SettingsController < Rho::RhoController
     if @params['login'] and @params['password']
       success = SyncEngine::login(@params['login'], @params['password'])
     else
-      @msg = "You entered an invalid login/password, please try again."
+      @msg = "Username and password are both required."
       render :action => :login
     end
+    
     if success > 0
       LighthouseSettings.set_notification("/app/Ticket/sync_notify", "sync_complete=true")
       
@@ -46,7 +51,7 @@ class SettingsController < Rho::RhoController
       SyncEngine::dosync
       redirect '/app?please_wait=true'
     else
-      @msg = "You entered an invalid login/password, please try again."
+      @msg = "You entered an invalid user name/password, please try again."
       render :action => :login
     end
   end

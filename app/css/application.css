@@ -2,6 +2,8 @@ a {text-decoration:none;}
 
 fieldset select {margin-top:5px;}
 
+.explain { margin: 0 10px;}
+
 .ticket_details {font-size:85%;}
 .ticket_reported {clear:left;font-size:85%;}
 
@@ -75,3 +77,5 @@ ul.sources li {
 .flash {
 	margin:50px 10px;
 }
+
+.redalert { padding:15px; font-weight:bold; color:red;}
