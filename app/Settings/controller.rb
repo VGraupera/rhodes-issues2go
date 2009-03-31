@@ -2,9 +2,12 @@ require 'rho'
 require 'rho/rhocontroller'
 require 'rhom/rhom_source'
 
+require 'helpers/application_helper'
+
 class SettingsController < Rho::RhoController
   include Rhom
-  
+  include ApplicationHelper
+    
   def index
     render :action => :index
   end
@@ -37,22 +40,28 @@ class SettingsController < Rho::RhoController
 
   # POST /User/login
   def do_login
-    if @params['login'] and @params['password']
-      success = SyncEngine::login(@params['login'], @params['password'])
-    else
+    login = @params['login']
+    password = @params['password']
+    
+    if !System.has_network
+      @msg = "No network detected. Make sure your device is connected first."
+      render :action => :login
+    elsif blank?(login) || blank?(password)
       @msg = "Username and password are both required."
       render :action => :login
-    end
+    else    
+      success = SyncEngine::login(login, password)
     
-    if success > 0
-      LighthouseSettings.set_notification("/app/Ticket/sync_notify", "sync_complete=true")
+      if success > 0
+        LighthouseSettings.set_notification("/app/Ticket/sync_notify", "sync_complete=true")
       
-      # run sync if we were successful
-      SyncEngine::dosync
-      redirect '/app?please_wait=true'
-    else
-      @msg = "You entered an invalid user name/password, please try again."
-      render :action => :login
+        # run sync if we were successful
+        SyncEngine::dosync
+        redirect '/app?please_wait=true'
+      else
+        @msg = "You entered an invalid user name/password, please try again."
+        render :action => :login
+      end
     end
   end
   

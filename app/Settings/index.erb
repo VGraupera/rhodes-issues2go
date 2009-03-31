@@ -1,0 +1,33 @@
+<div class="panel" style="height:480px;padding:0">
+
+<div class="toolbar">
+	<h1 id="pageTitle">Welcome to Issues To Go</h1>
+</div>
+
+<div style="padding: 20px 5px">
+<p class="explain">Issues To Go syncs your Lighthouse tickets to your iPhone. You will need an account on <a href="www.issuestogo.com">issuestogo.com</a>.</p>
+
+<% unless System.has_network %>
+<div class="redalert">Internet connectivity is required, but was not detected. Make sure your device is connected to the Internet before proceeding.</div>
+<% end %>
+
+<p align="center">
+  <a href="/app/Settings/login" class="whiteButton">Use an Existing Account</a>
+</p>
+
+<p align="center">
+OR
+</p>
+
+<p align="center">
+  <% if System.has_network %>
+    <a href="/app/Settings/create" class="whiteButton">Create a New Account</a>
+  <% else %>
+    <a href="#" class="whiteButton">Create a New Account</a>
+  <% end %>
+</p>
+
+
+</div>
+
+</div>

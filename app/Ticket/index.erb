@@ -1,5 +1,5 @@
 <div class="toolbar">
-	<h1 id="pageTitle">Tickets</h1>
+	<h1 id="pageTitle"><%= @title %></h1>
 	<% if @project %>
 	  <span class="right_button"><a href="<%= "/app/Ticket/new?project=#{@project.object}" %>" class="button">New</a></span>
 	<% end %>
