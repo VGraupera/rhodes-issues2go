@@ -1,7 +1,10 @@
-Client application for
+Client application for Issues To Go
 
-http://issues2go.vdggroup.com
-http://www.issues2go.com
+Issues To Go mobilizes the Lighthouse Issue Tracking System on a variety of smartphones including iPhone, Blackberry, Windows Mobile, Symbian and Android. Now stay on top of open tickets for the projects you are already tracking in Lighthouse. Issues To Go synchronizes with Lighthouse to keep you informed of current issues even while offline. Issues To Go is a commercially supported open source product.
 
+Issues To Go is a product of the VDG Group (http://www.vdggroup.com) and is written in Rhodes mobile application framework.
+
+http://www.issuestogo.com
+http://github.com/VGraupera/rhodes-issues2go/tree/master
 
 
