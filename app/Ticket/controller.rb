@@ -10,7 +10,6 @@ class TicketController < Rho::RhoController
   def index
     puts "in index with >#{@params['id']}<"
     @title = "All tickets"	
-    @tickets = Ticket.find(:all)
     
     @please_wait = @params['please_wait']
     
@@ -20,7 +19,11 @@ class TicketController < Rho::RhoController
         @project = Project.find(@params['id'])
         @title = @project.name
       
-        @tickets = @tickets.reject {|ticket| ticket.project_id != strip_braces(@params['id']) }
+        project_id = strip_braces(@params['id'])
+        @tickets = Ticket.find(:all, :conditions => {"project_id" => project_id}) 
+        #@tickets.reject {|ticket| ticket.project_id != strip_braces(@params['id']) }
+      else
+        @tickets = Ticket.find(:all, :select => ['title','number','state','project_id'])
       end
       @tickets = @tickets.sort {|x,y| y.number.to_i <=> x.number.to_i }
     end
