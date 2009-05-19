@@ -19,8 +19,10 @@
 		<div class="clearer"></div>
 		<h3>Comments and changes</h3>
 		<div id="ticket_history">
-			<% versions = TicketVersions.find(:all).reject {|version| version.ticket_id != strip_braces(@ticket.object) }
-				 versions = versions.sort { |x,y| Time.parse(x.updated_at) <=> Time.parse(y.updated_at) }
+			<%  
+			  ticket_id = strip_braces(@ticket.object)
+			  versions = TicketVersions.find(:all, :conditions => {"ticket_id" => ticket_id})
+				versions = versions.sort { |x,y| Time.parse(x.updated_at) <=> Time.parse(y.updated_at) }
 				versions.each do |change| %>
 				<div class="ticket_version">
 					<div class="changename"><%= User.find(change.user_id).name %></div>
@@ -78,11 +80,9 @@
 			<div class="row"><label>Milestone</label>
 				<select id="ticket_milestone_id" name="ticket[milestone_id]">
 					<option value="">-- none --</option>
-					<% Milestone.find(:all).each do |milestone| %>
-						<% if milestone.project_id == @ticket.project_id %>
+					<% Milestone.find(:all, :conditions => {"project_id"=>@ticket.project_id}).each do |milestone| %>
 							<% selected = (@ticket.milestone_id == strip_braces(milestone.object)) ? "selected=\"#{strip_braces(milestone.object)}\"" : "" %>
 							<option value="<%= strip_braces(milestone.object) %>" <%= selected %>><%= milestone.title %></option>
-						<% end %>
 					<% end %>
 				</select>
 		  </div>
